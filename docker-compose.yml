@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # Dịch vụ quản lý sản phẩm
+  # Service for managing products
   product-service:
     build:
       context: ./services/product-service
@@ -10,7 +10,7 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/products
 
-  # Dịch vụ quản lý đơn hàng
+  # Service for managing orders
   order-service:
     build:
       context: ./services/order-service
@@ -19,7 +19,7 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/orders
 
-  # Dịch vụ quản lý người dùng
+  # Service for managing users
   user-service:
     build:
       context: ./services/user-service
@@ -28,13 +28,13 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/users
 
-  # Dịch vụ MongoDB để lưu trữ dữ liệu
+  # MongoDB service for data storage
   mongo:
     image: mongo
     ports:
       - '27017:27017'
 
-  # Dịch vụ RabbitMQ để xử lý thông điệp
+  # RabbitMQ service for message processing
   rabbitmq:
     image: rabbitmq:3-management
     ports:
@@ -45,4 +45,4 @@ networks:
   default:
     driver: bridge
 
-# File này sử dụng định dạng docker-compose version 3.8
+# This file uses Docker Compose format version 3.8
