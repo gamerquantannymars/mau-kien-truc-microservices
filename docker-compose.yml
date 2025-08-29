@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  # Service for product management
   product-service:
     build:
       context: ./services/product-service
@@ -9,6 +10,7 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/products
 
+  # Service for order management
   order-service:
     build:
       context: ./services/order-service
@@ -17,6 +19,7 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/orders
 
+  # Service for user management
   user-service:
     build:
       context: ./services/user-service
@@ -25,11 +28,13 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/users
 
+  # MongoDB service to store data
   mongo:
     image: mongo
     ports:
       - '27017:27017'
 
+  # RabbitMQ message broker service
   rabbitmq:
     image: rabbitmq:3-management
     ports:
