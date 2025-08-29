@@ -44,3 +44,5 @@ services:
 networks:
   default:
     driver: bridge
+
+# File này sử dụng định dạng docker-compose version 3.8
