@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  product-service:
+    build:
+      context: ./services/product-service
+    ports:
+      - '3001:3001'
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/products
+
+  order-service:
+    build:
+      context: ./services/order-service
+    ports:
+      - '3002:3002'
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/orders
+
+  user-service:
+    build:
+      context: ./services/user-service
+    ports:
+      - '3003:3003'
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/users
+
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '15672:15672'
+      - '5672:5672'
